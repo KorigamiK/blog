@@ -6,7 +6,15 @@ type Props = {
 const Layout: React.FC<Props> = ({ children }: Props) => {
   return (
     <>
-      <main className="pt-4 pb-12">{children}</main>
+      <main>{children}</main>
+      <footer>
+        <hr />
+        <div id="bottom-nav">
+          <p>© Copyright ·</p>
+          <p>KorigamiK ·</p>
+          <p>2022</p>
+        </div>
+      </footer>
     </>
   );
 };

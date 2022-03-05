@@ -1,3 +1,12 @@
 .thumbnail {
   text-align: center;
 }
+
+.section {
+  align-self: center;
+}
+
+.article {
+  width: 70%;
+  margin: 0 auto;
+}

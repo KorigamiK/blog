@@ -25,11 +25,9 @@ const components = {
 };
 
 const PostPage: React.FC<Props> = ({ source, frontMatter, slug }) => {
-  // get setters
   const { setTags } = useMdxComponentsContext();
   const { title, description, thumbnail } = frontMatter;
 
-  // set tags
   useEffect(() => {
     setTags(frontMatter.tags);
   }, [setTags, frontMatter.tags]);
@@ -37,15 +35,20 @@ const PostPage: React.FC<Props> = ({ source, frontMatter, slug }) => {
   return (
     <>
       <Header title={title} href={slug} />
-      <h4>{description}</h4>
 
-      <article>
-        <div className={styles.thumbnail}>
-          <Thumbnail title={title} src={thumbnail} />
-        </div>
+      <section className={styles.section}>
+        <article className={styles.article}>
+          <div className={styles.thumbnail}>
+            <Thumbnail title={title} src={thumbnail} />
+          </div>
 
-        <MDXRemote components={components} {...source} />
-      </article>
+          <Tags />
+
+          <h3>{description}</h3>
+
+          <MDXRemote components={components} {...source} />
+        </article>
+      </section>
     </>
   );
 };

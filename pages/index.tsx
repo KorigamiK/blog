@@ -10,31 +10,50 @@ type Props = {
 };
 
 const Home: NextPage<Props> = ({ posts }: Props) => {
+  const getTitle = (post: IPost) => (
+    <h4 key={post.slug + "title"}>
+      <Link href={`/posts/${post.slug}`}>
+        <a>{post.title}</a>
+      </Link>
+      <p className="post-date">{post.date}</p>
+    </h4>
+  );
+
+  const getContent = (post: IPost) => (
+    <div key={post.slug + "content"}>
+      <div>
+        <Thumbnail
+          slug={post.slug}
+          title={post.title}
+          src={post.thumbnail}
+          height={120}
+          width={210}
+        />
+      </div>
+
+      <p>{post.description}</p>
+    </div>
+  );
+
+  const postContent = (post: IPost) => [
+    getTitle(post),
+    <div key={post.slug + "circle"} className="circle" />,
+    getContent(post),
+  ];
+
   return (
     <>
       <Header />
 
       <section>
-        <h1>Posts</h1>
+        <h1 className="posts-text">Posts</h1>
 
-        <div>
-          {posts.map((post) => (
+        <div id="posts">
+          <div id="timeline" />
+
+          {posts.map((post, idx) => (
             <article key={post.slug}>
-              <div className="mb-4">
-                <Thumbnail
-                  slug={post.slug}
-                  title={post.title}
-                  src={post.thumbnail}
-                />
-              </div>
-
-              <h2 className="text-2xl font-bold mb-4">
-                <Link href={`/posts/${post.slug}`}>
-                  <a>{post.title}</a>
-                </Link>
-              </h2>
-
-              <p>{post.description}</p>
+              {idx % 2 ? postContent(post) : postContent(post).reverse()}
             </article>
           ))}
         </div>
