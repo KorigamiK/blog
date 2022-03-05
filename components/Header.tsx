@@ -1,12 +1,14 @@
 import Link from "next/link";
 
+type Props = { title?: string; href?: string };
+
 // add the React Header Element
-const Header: React.FC = () => {
+const Header: React.FC<Props> = ({ title = "Blog", href = "/" }) => {
   return (
     // header value
     <header className="head">
-      <Link href="/">
-        <a className="title">Blog</a>
+      <Link href={href}>
+        <a className="title">{title}</a>
       </Link>
     </header>
   );

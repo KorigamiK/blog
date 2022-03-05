@@ -11,6 +11,7 @@ import {
 type ContextProps = {
   tags: string[];
   setTags: Dispatch<SetStateAction<string[]>>;
+  title?: string;
 };
 
 type Props = {

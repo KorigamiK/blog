@@ -1,6 +1,6 @@
 ---
 date: "2022-3-4"
-thumbnail: /assets/blog/friends.jpg
+thumbnail: /assets/blog/foss.jpg
 title: FOSS
 description: Analysis of the open source industry
 tags: ["FOSS", "Philosophy"]
@@ -11,7 +11,14 @@ tags: ["FOSS", "Philosophy"]
 FOSSfoss
 This is sample text
 
-asdfa
-sd
-friendas
-d
+```javascript
+export const getStaticProps: GetStaticProps = async () => {
+  const posts = postUtils.getAllPosts([
+    "title",
+    "slug",
+    "date",
+    "description",
+    "thumbnail",
+    "tags",
+  ]);
+```

@@ -2,26 +2,29 @@ import Link from "next/link";
 import Image from "next/image";
 
 type Props = {
-  // Thumbnail title
   title: string;
-  // Thumbnail image src
   src: string;
-  // Thumbnail slug link
   slug?: string;
+  height?: number;
+  width?: number;
 };
 
-const Thumbnail: React.FC<Props> = ({ title, src, slug }: Props) => {
-  // Add the Thumbnail cover image
+const Thumbnail: React.FC<Props> = ({
+  title,
+  src,
+  slug,
+  height = 210,
+  width = 300,
+}: Props) => {
   const image = (
     <Image
-      height={70}
-      width={100}
+      height={height}
+      width={width}
       src={src}
       alt={`Thumbnail cover image ${title}`}
     />
   );
 
-  // return the Thumbnail cover image slug
   return (
     <>
       {slug ? (

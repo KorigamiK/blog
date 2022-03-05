@@ -3,40 +3,43 @@ import type { NextPage, GetStaticProps } from "next";
 import { IPost } from "../models/post";
 import Link from "next/link";
 import postUtils from "../utils/mdxUtils";
+import Header from "../components/Header";
 
-// props type
 type Props = {
   posts: [IPost];
 };
 
-// component render function
 const Home: NextPage<Props> = ({ posts }: Props) => {
   return (
-    <div>
-      <h1 className="text-4xl font-bold mb-4">Posts</h1>
+    <>
+      <Header />
 
-      <div className="space-y-12">
-        {posts.map((post) => (
-          <div key={post.slug}>
-            <div className="mb-4">
-              <Thumbnail
-                slug={post.slug}
-                title={post.title}
-                src={post.thumbnail}
-              />
-            </div>
+      <section>
+        <h1>Posts</h1>
 
-            <h2 className="text-2xl font-bold mb-4">
-              <Link href={`/posts/${post.slug}`}>
-                <a>{post.title}</a>
-              </Link>
-            </h2>
+        <div>
+          {posts.map((post) => (
+            <article key={post.slug}>
+              <div className="mb-4">
+                <Thumbnail
+                  slug={post.slug}
+                  title={post.title}
+                  src={post.thumbnail}
+                />
+              </div>
 
-            <p>{post.description}</p>
-          </div>
-        ))}
-      </div>
-    </div>
+              <h2 className="text-2xl font-bold mb-4">
+                <Link href={`/posts/${post.slug}`}>
+                  <a>{post.title}</a>
+                </Link>
+              </h2>
+
+              <p>{post.description}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+    </>
   );
 };
 
@@ -53,6 +56,5 @@ export const getStaticProps: GetStaticProps = async () => {
     "tags",
   ]);
 
-  // return the posts props
   return { props: { posts } };
 };
