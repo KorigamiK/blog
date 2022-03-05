@@ -2,7 +2,7 @@ import Thumbnail from "../components/Thumbnail";
 import type { NextPage, GetStaticProps } from "next";
 import { IPost } from "../models/post";
 import Link from "next/link";
-import { getAllPosts } from "../utils/mdxUtils";
+import postUtils from "../utils/mdxUtils";
 
 // props type
 type Props = {
@@ -44,12 +44,13 @@ export default Home;
 
 // get posts from serverside at build time
 export const getStaticProps: GetStaticProps = async () => {
-  const posts = getAllPosts([
+  const posts = postUtils.getAllPosts([
     "title",
     "slug",
     "date",
     "description",
     "thumbnail",
+    "tags",
   ]);
 
   // return the posts props

@@ -1,9 +1,6 @@
-// import link artifacts
 import Link from "next/link";
-// import image artifacts
 import Image from "next/image";
 
-// Thumbnail properties
 type Props = {
   // Thumbnail title
   title: string;
@@ -38,5 +35,4 @@ const Thumbnail: React.FC<Props> = ({ title, src, slug }: Props) => {
   );
 };
 
-// export Thumbnail module
 export default Thumbnail;

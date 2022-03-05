@@ -1,13 +1,13 @@
-import { serialize } from "next-mdx-remote/serialize";
-import { GetStaticProps, GetStaticPaths } from "next";
 import { useEffect } from "react";
-import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
+import { GetStaticProps, GetStaticPaths } from "next";
 
+import { serialize } from "next-mdx-remote/serialize";
+import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { useMdxComponentsContext } from "../../context/mdxContext";
+import postUtils from "../../utils/mdxUtils";
+
+import { Iparams, IPost } from "../../models/post";
 import Thumbnail from "../../components/Thumbnail";
-import { IPost } from "../../models/post";
-import { getPost, getAllPosts } from "../../utils/mdxUtils";
-import { ParsedUrlQuery } from "querystring";
 import Tags from "../../components/tags";
 
 // props type
@@ -16,17 +16,18 @@ type Props = {
   frontMatter: Omit<IPost, "slug">;
 };
 
-// components to render
+// components available to render in mdx files
 const components = {
   Tags,
 };
 
-const PostPage: React.FC<Props> = ({ source, frontMatter }: Props) => {
+const PostPage: React.FC<Props> = ({ source, frontMatter }) => {
   // get setters
   const { setTags } = useMdxComponentsContext();
+  const { title, description, thumbnail } = frontMatter;
 
+  // set tags
   useEffect(() => {
-    // set tags
     setTags(frontMatter.tags);
   }, [setTags, frontMatter.tags]);
 
@@ -34,12 +35,12 @@ const PostPage: React.FC<Props> = ({ source, frontMatter }: Props) => {
     <div>
       <article className="prose prose-green">
         <div className="mb-4">
-          <Thumbnail title={frontMatter.title} src={frontMatter.thumbnail} />
+          <Thumbnail title={title} src={thumbnail} />
         </div>
 
-        <h1>{frontMatter.title}</h1>
+        <h1>{title}</h1>
 
-        <p>{frontMatter.description}</p>
+        <p>{description}</p>
 
         <MDXRemote components={components} {...source} />
       </article>
@@ -49,16 +50,15 @@ const PostPage: React.FC<Props> = ({ source, frontMatter }: Props) => {
 
 export default PostPage;
 
-interface Iparams extends ParsedUrlQuery {
-  slug: string;
-}
-
 export const getStaticProps: GetStaticProps = async (context) => {
-  const { slug } = context.params as Iparams;
   // get the slug
-  const { content, data } = getPost(slug);
+  const { slug } = context.params as Iparams;
+  const { content, data } = postUtils.getPost(slug);
   // serialize the data on the server side
-  const mdxSource = await serialize(content, { scope: data });
+  const mdxSource = await serialize(content, {
+    scope: data as unknown as Record<string, unknown>,
+  });
+
   return {
     props: {
       source: mdxSource,
@@ -68,8 +68,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
 };
 
 export const getStaticPaths: GetStaticPaths = () => {
-  //only get the slug from posts
-  const posts = getAllPosts(["slug"]);
+  // only get the slug from posts
+  const posts = postUtils.getAllPosts(["slug"]);
 
   // map through to return post paths
   const paths = posts.map((post) => ({

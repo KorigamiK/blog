@@ -6,7 +6,7 @@ const Header: React.FC = () => {
     // header value
     <header className="head">
       <Link href="/">
-        <a className="text-2xl font-bold text-green-500">Blog</a>
+        <a className="title">Blog</a>
       </Link>
     </header>
   );

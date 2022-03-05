@@ -20,7 +20,6 @@ type Props = {
 const MdxComponentsContext = createContext({} as ContextProps);
 
 export function MdxComponentsProvider({ children }: Props): ReactElement {
-  const [prerequisites, setPrerequisites] = useState<string[]>([]);
   const [tags, setTags] = useState<string[]>([]);
 
   return (
