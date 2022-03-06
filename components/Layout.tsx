@@ -1,3 +1,5 @@
+import Social from "./Social";
+
 type Props = {
   children: React.ReactNode;
   title?: string;
@@ -8,6 +10,7 @@ const Layout: React.FC<Props> = ({ children }: Props) => {
     <>
       <main>{children}</main>
       <footer>
+        <Social />
         <hr />
         <div id="bottom-nav">
           <p>© Copyright ·</p>

@@ -5,8 +5,10 @@ const useTags = () => {
   const tags = useMdxComponentsContext().tags;
   return (
     <>
+      <h4>
+        <u>Tags:</u>
+      </h4>
       <ol className={styles.tags}>
-        <p>Tags:</p>
         {tags.map((stack, index) => (
           <li key={index}>{stack}</li>
         ))}
