@@ -7,8 +7,8 @@ type Props = {};
 const getSocial = ({ name, href = "/" }: { name: string; href: string }) => (
   <Link href={href} passHref>
     <li>
-      <span>{name}</span>
       <Icon name={name} href={href} />
+      <span>{name}</span>
     </li>
   </Link>
 );

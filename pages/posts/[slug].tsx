@@ -12,6 +12,7 @@ import { Iparams, IPost } from "../../models/post";
 import Thumbnail from "../../components/Thumbnail";
 import Tags from "../../components/tags";
 import Header from "../../components/Header";
+import moment from "moment";
 
 type Props = {
   source: MDXRemoteSerializeResult;
@@ -24,9 +25,14 @@ const components = {
   Tags,
 };
 
+function convertDate(date_str: string) {
+  const date = moment(date_str, "YYYY-MM-DD");
+  return date.format("ddd MMMM Do, YYYY").toString();
+}
+
 const PostPage: React.FC<Props> = ({ source, frontMatter, slug }) => {
   const { setTags } = useMdxComponentsContext();
-  const { title, description, thumbnail } = frontMatter;
+  const { title, description, thumbnail, date } = frontMatter;
 
   useEffect(() => {
     setTags(frontMatter.tags);
@@ -41,6 +47,7 @@ const PostPage: React.FC<Props> = ({ source, frontMatter, slug }) => {
             <Thumbnail title={title} src={thumbnail} />
           </div>
 
+          <p>{convertDate(date)}</p>
           <Tags />
           <h2>{description}</h2>
 
@@ -74,7 +81,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
 export const getStaticPaths: GetStaticPaths = () => {
   const posts = postUtils.getAllPosts(["slug"]);
 
-  // map through to return post paths
   const paths = posts.map((post) => ({
     params: {
       slug: post.slug,

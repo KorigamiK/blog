@@ -5,14 +5,13 @@ const useTags = () => {
   const tags = useMdxComponentsContext().tags;
   return (
     <>
-      <h4>
-        <u>Tags:</u>
-      </h4>
       <ol className={styles.tags}>
+        Tags:
         {tags.map((stack, index) => (
           <li key={index}>{stack}</li>
         ))}
       </ol>
+      <hr className={styles.hr} />
     </>
   );
 };

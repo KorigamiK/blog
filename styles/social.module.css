@@ -1,8 +1,8 @@
 #social {
   position: fixed;
-  bottom: 35%;
+  bottom: 30%;
   padding: 0;
-  left: 0;
+  right: 0;
 }
 
 #social > li {
@@ -12,13 +12,13 @@
   align-items: center;
   justify-content: center;
 
-  min-width: 11ch;
-  min-height: 4ch;
+  min-width: 7ch;
+  min-height: 5ch;
   margin-top: 10px;
 
-  transform: translateX(-7ch);
-  border-radius: 0 10px 10px 0px;
-  padding-right: 5px;
+  transform: translateX(6.6ch);
+  border-radius: 10px 0 0 10px;
+  padding-left: 10px;
   transition: ease-in 200ms;
   cursor: pointer;
 }
@@ -29,11 +29,12 @@
 }
 
 #social > li > a {
-  margin-left: auto;
+  margin-right: auto;
 }
 
-.nav {
-  padding: 0;
+#social > li > span {
+  padding-right: 3px;
+  padding-left: 4px;
 }
 
 @media only screen and (max-width: 600px) {

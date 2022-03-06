@@ -49,7 +49,7 @@ header:hover {
   width: 60%;
   display: flex;
   place-items: flex-end;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 }
 
@@ -155,10 +155,9 @@ footer > hr {
   justify-content: center;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 700px) {
   article {
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 0;
   }
   footer hr {
     margin: 0;
