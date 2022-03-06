@@ -7,7 +7,7 @@ type Props = {
 
 const Layout: React.FC<Props> = ({ children }: Props) => {
   return (
-    <>
+    <body className="light">
       <main>{children}</main>
       <footer>
         <Social />
@@ -18,7 +18,7 @@ const Layout: React.FC<Props> = ({ children }: Props) => {
           <p>2022</p>
         </div>
       </footer>
-    </>
+    </body>
   );
 };
 

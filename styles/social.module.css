@@ -7,7 +7,7 @@
 
 #social > li {
   list-style: none;
-  background-color: rgb(185, 185, 185);
+  background-color: var(--shadow);
   display: flex;
   align-items: center;
   justify-content: center;

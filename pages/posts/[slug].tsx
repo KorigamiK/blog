@@ -41,8 +41,8 @@ const PostPage: React.FC<Props> = ({ source, frontMatter, slug }) => {
             <Thumbnail title={title} src={thumbnail} />
           </div>
 
-          <h3>{description}</h3>
           <Tags />
+          <h2>{description}</h2>
 
           <MDXRemote components={components} {...source} />
         </article>

@@ -11,8 +11,9 @@ const Header: React.FC<Props> = ({ title = "Blog", href = "/" }) => {
       <Image
         alt="korigamik"
         src={"/assets/crane-colored.png"}
-        height={120}
-        width={150}
+        className="crane-logo"
+        height={140}
+        width={190}
       />
     </header>
   );

@@ -1,0 +1,25 @@
+:root {
+  --main-color: #2c666eff;
+  --rich-black: #07393cff;
+  --rich-black-true: #0a090cff;
+  --middle-blue: #90ddf0ff;
+  --white: rgb(240, 237, 238);
+  --background: rgba(240, 237, 238, 0.5);
+  --secondary-1: #1c1f33;
+  --secondary-2: #23395b;
+  --shadow: rgba(58, 124, 136, 0.8);
+  --dark-font: #0b132b;
+  --light-font: #506161;
+  --text: var(--rich-black-true);
+  --bg: linear-gradient(to bottom right, var(--middle-blue), var(--main-color));
+}
+
+.light {
+  --bg: linear-gradient(to bottom right, var(--middle-blue), var(--main-color));
+  --text: var(--rich-black-true);
+}
+
+.dark {
+  --text: var(--white);
+  --bg: black;
+}
