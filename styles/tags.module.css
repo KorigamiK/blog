@@ -1,13 +1,19 @@
 .tags {
   display: flex;
-  /* flex-wrap: wrap; */
   overflow: hidden;
   gap: 1em;
-  /* justify-content: center; */
   align-items: center;
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 0;
+  overflow-x: scroll;
+  scrollbar-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
+  scrollbar-width: thin;
+}
+
+.tags::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
 }
 
 .tags > li {

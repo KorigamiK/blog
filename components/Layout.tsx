@@ -1,3 +1,4 @@
+import Link from "next/link";
 import MetaHead from "./MetaHead";
 import Social from "./Social";
 
@@ -17,8 +18,10 @@ const Layout: React.FC<Props> = ({ children }: Props) => {
         <hr />
         <div id="bottom-nav">
           <p>© Copyright ·</p>
-          <p>KorigamiK ·</p>
-          <p>2022</p>
+          <Link passHref href="https://github.com/korigamik/">
+            <p className="linked">KorigamiK</p>
+          </Link>
+          <p> · 2022</p>
         </div>
       </footer>
       {/* </body> */}

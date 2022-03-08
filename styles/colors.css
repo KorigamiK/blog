@@ -12,6 +12,8 @@
   --light-font: #506161;
   --text: var(--rich-black-true);
   --bg: linear-gradient(to bottom right, var(--middle-blue), var(--main-color));
+  --timeline: #2f4858;
+  --timeline-light: #348aa7;
 }
 
 .light {

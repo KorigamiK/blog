@@ -50,7 +50,6 @@ const Home: NextPage<Props> = ({ posts }: Props) => {
 
         <div id="posts">
           <div id="timeline" />
-
           {posts.map((post, idx) => (
             <article key={post.slug}>
               {idx % 2 ? postContent(post) : postContent(post).reverse()}

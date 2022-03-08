@@ -1,8 +1,10 @@
-#social {
+.nav {
+  display: flex;
   position: fixed;
-  bottom: 30%;
-  padding: 0;
+  bottom: 0;
   right: 0;
+  top: 0;
+  align-items: center;
 }
 
 #social > li {
@@ -38,6 +40,10 @@
 }
 
 @media only screen and (max-width: 600px) {
+  .nav {
+    position: static;
+  }
+
   #social {
     position: inherit;
     display: flex;
@@ -46,6 +52,7 @@
     justify-content: center;
     align-items: center;
     margin-top: 30px;
+    padding: 0;
   }
   #social > li {
     display: block;

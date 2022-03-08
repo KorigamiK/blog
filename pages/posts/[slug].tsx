@@ -46,8 +46,8 @@ const PostPage: React.FC<Props> = ({ source, frontMatter, slug }) => {
           <div className={styles.thumbnail}>
             <Thumbnail title={title} src={thumbnail} />
           </div>
-
-          <p>{convertDate(date)}</p>
+          <br />
+          <time dateTime={date}>{convertDate(date)}</time>
           <Tags />
           <h2>{description}</h2>
 
