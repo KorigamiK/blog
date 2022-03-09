@@ -4,7 +4,6 @@ import fs from "fs";
 import { Items, Post } from "./utils";
 
 export default class postUtils {
-  // path to our list of available posts
   private static POSTS_PATH = join(process.cwd(), "_posts");
   private static MDX_REGEX = /\.mdx?$/;
 

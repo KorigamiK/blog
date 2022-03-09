@@ -4,6 +4,7 @@ import { IPost } from "../models/post";
 import Link from "next/link";
 import postUtils from "../utils/mdxUtils";
 import Header from "../components/Header";
+import convertDate from "../utils/date";
 
 type Props = {
   posts: [IPost];
@@ -15,7 +16,9 @@ const Home: NextPage<Props> = ({ posts }: Props) => {
       <Link href={`/posts/${post.slug}`}>
         <a>{post.title}</a>
       </Link>
-      <p className="post-date">{post.date}</p>
+      <time className="post-date">
+        <p>{post.date}</p>
+      </time>
     </h4>
   );
 
@@ -51,7 +54,7 @@ const Home: NextPage<Props> = ({ posts }: Props) => {
         <div id="posts">
           <div id="timeline" />
           {posts.map((post, idx) => (
-            <article key={post.slug}>
+            <article key={post.slug + "article"}>
               {idx % 2 ? postContent(post) : postContent(post).reverse()}
             </article>
           ))}
@@ -65,7 +68,7 @@ export default Home;
 
 // get posts from serverside at build time
 export const getStaticProps: GetStaticProps = async () => {
-  const posts = postUtils.getAllPosts([
+  const posts: IPost[] = postUtils.getAllPosts([
     "title",
     "slug",
     "date",
@@ -73,6 +76,8 @@ export const getStaticProps: GetStaticProps = async () => {
     "thumbnail",
     "tags",
   ]);
+
+  posts.forEach((p) => (p.date = convertDate(p.date)));
 
   return { props: { posts } };
 };

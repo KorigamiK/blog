@@ -12,7 +12,7 @@ import { Iparams, IPost } from "../../models/post";
 import Thumbnail from "../../components/Thumbnail";
 import Tags from "../../components/tags";
 import Header from "../../components/Header";
-import moment from "moment";
+import convertDate from "../../utils/date";
 
 type Props = {
   source: MDXRemoteSerializeResult;
@@ -24,11 +24,6 @@ type Props = {
 const components = {
   Tags,
 };
-
-function convertDate(date_str: string) {
-  const date = moment(date_str, "YYYY-MM-DD");
-  return date.format("ddd MMMM Do, YYYY").toString();
-}
 
 const PostPage: React.FC<Props> = ({ source, frontMatter, slug }) => {
   const { setTags } = useMdxComponentsContext();
@@ -67,6 +62,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
   // serialize the data on the server side
   const mdxSource = await serialize(content, {
     scope: data as unknown as Record<string, unknown>,
+    mdxOptions: {
+      rehypePlugins: [require("@mapbox/rehype-prism")],
+    },
   });
 
   return {
