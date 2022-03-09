@@ -13,6 +13,8 @@ body {
   background: var(--bg);
 
   overflow-x: hidden;
+  height: 100%;
+  /* width: 100%; */
 }
 
 .crane-logo {
