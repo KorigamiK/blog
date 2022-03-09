@@ -7,11 +7,17 @@ const SEO = {
   image: "https://blog-korigamik.vercel.app/assets/crane-colored.png",
   url: "https://blog-korigamik.vercel.app/",
   keywords: "blog korigamik",
+  color: "#90ddf0ff",
 };
 
 const MetaHead = (
   <Head>
     <title key="title">{SEO.title}</title>
+    <meta name="theme-color" content={SEO.color} />
+    <meta name="msapplication-navbutton-color" content={SEO.color} />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content={SEO.color} />
+
     <meta name="description" key="description" content={SEO.description} />
     <meta name="og:type" key="og:type" content={SEO.type} />
     <meta name="og:title" key="og:title" content={SEO.title} />
@@ -26,4 +32,5 @@ const MetaHead = (
     <link rel="icon" type="image/svg+xml" href="/assets/crane-colored.png" />
   </Head>
 );
+
 export default MetaHead;
